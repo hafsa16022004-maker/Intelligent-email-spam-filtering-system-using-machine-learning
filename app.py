@@ -3,7 +3,7 @@ import pickle
 import string
 import sqlite3
 import pandas as pd
-import matplotlib.pyplot as plt
+
 from datetime import datetime
 
 from nltk.corpus import stopwords
