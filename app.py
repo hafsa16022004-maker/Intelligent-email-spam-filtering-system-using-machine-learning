@@ -358,15 +358,15 @@ if st.session_state.logged_in == False:
 
     data = c.fetchone()
 
-          st.success("Login Successful!")
+    st.success("Login Successful!")
 
-                       st.rerun()
+    st.rerun()
 
          else:
 
-        st.error("Invalid Username or Password")
+               st.error("Invalid Username or Password")
 
-            st.markdown('</div>', unsafe_allow_html=True)
+                st.markdown('</div>', unsafe_allow_html=True)
 
     # ---------------- REGISTER ----------------
     elif menu == "Register":
