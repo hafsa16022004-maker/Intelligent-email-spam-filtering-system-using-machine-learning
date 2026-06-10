@@ -330,49 +330,43 @@ if st.session_state.logged_in == False:
     # ---------------- LOGIN ----------------
     elif menu == "Login":
 
-    col1, col2, col3 = st.columns([1, 2, 1])
+        col1, col2, col3 = st.columns([1, 2, 1])
 
-    with col2:
+        with col2:
 
-        st.markdown('<div class="login-box">', unsafe_allow_html=True)
+             st.markdown("""
+             <div class="login-title">
+                Login
+             </div>
+             """, unsafe_allow_html=True)
 
-        st.markdown("""
-        <div class="login-title">
-            Login
-        </div>
-        """, unsafe_allow_html=True)
+            username = st.text_input("Username")
 
-        username = st.text_input("Username")
+            password = st.text_input(
+                "Password",
+                type="password"
+           )
 
-        password = st.text_input(
-            "Password",
-            type="password"
-        )
+          if st.button("Login"):
 
-        if st.button("Login"):
+             c.execute(
+                 "SELECT * FROM users WHERE username=? AND password=?",
+                  (username, password)
+             )
 
-            c.execute(
-                "SELECT * FROM users WHERE username=? AND password=?",
-                (username, password)
-            )
+             data = c.fetchone()
 
-            data = c.fetchone()
+             if data:
 
-            if data:
+                 st.session_state.logged_in = True
+                 st.session_state.username = username
 
-                st.session_state.logged_in = True
-                st.session_state.username = username
+                 st.success("Login Successful!")
+                 st.rerun()
 
-                st.success("Login Successful!")
+             else:
 
-                st.rerun()
-
-            else:
-
-                st.error("Invalid Username or Password")
-
-        st.markdown('</div>', unsafe_allow_html=True)
-
+                 st.error("Invalid Username or Password")
     # ---------------- REGISTER ----------------
     elif menu == "Register":
 
