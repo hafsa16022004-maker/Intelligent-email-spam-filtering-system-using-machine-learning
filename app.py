@@ -362,9 +362,9 @@ if st.session_state.logged_in == False:
 
     st.rerun()
 
-         else:
+             else:
 
-               st.error("Invalid Username or Password")
+                  st.error("Invalid Username or Password")
 
                 st.markdown('</div>', unsafe_allow_html=True)
 
