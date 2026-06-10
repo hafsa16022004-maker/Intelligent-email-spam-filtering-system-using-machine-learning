@@ -3,7 +3,6 @@ import pickle
 import string
 import sqlite3
 import pandas as pd
-
 from datetime import datetime
 
 from nltk.corpus import stopwords
@@ -334,39 +333,39 @@ if st.session_state.logged_in == False:
 
         with col2:
 
-             st.markdown("""
-             <div class="login-title">
+            st.markdown("""
+            <div class="login-title">
                 Login
-             </div>
-             """, unsafe_allow_html=True)
+            </div>
+            """, unsafe_allow_html=True)
 
             username = st.text_input("Username")
 
             password = st.text_input(
                 "Password",
                 type="password"
-           )
+            )
 
-          if st.button("Login"):
+            if st.button("Login"):
 
-             c.execute(
-                 "SELECT * FROM users WHERE username=? AND password=?",
-                  (username, password)
-             )
+                c.execute(
+                    "SELECT * FROM users WHERE username=? AND password=?",
+                    (username, password)
+                )
 
-             data = c.fetchone()
+                data = c.fetchone()
 
-             if data:
+                if data:
 
-                 st.session_state.logged_in = True
-                 st.session_state.username = username
+                    st.session_state.logged_in = True
+                    st.session_state.username = username
 
-                 st.success("Login Successful!")
-                 st.rerun()
+                    st.success("Login Successful!")
+                    st.rerun()
 
-             else:
+                else:
 
-                 st.error("Invalid Username or Password")
+                    st.error("Invalid Username or Password")
     # ---------------- REGISTER ----------------
     elif menu == "Register":
 
@@ -539,4 +538,6 @@ else:
         else:
 
             st.info("No history available")
+
+
 
