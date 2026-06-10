@@ -358,12 +358,7 @@ if st.session_state.logged_in == False:
 
     data = c.fetchone()
 
-          if data:
-
-                  st.session_state.logged_in = True
-                  st.session_state.username = username
-
-                       st.success("Login Successful!")
+          st.success("Login Successful!")
 
                        st.rerun()
 
