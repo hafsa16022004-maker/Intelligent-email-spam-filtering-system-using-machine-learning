@@ -351,9 +351,9 @@ if st.session_state.logged_in == False:
 
             if st.button("Login"):
 
-    c.execute(
-        "SELECT * FROM users WHERE username=? AND password=?",
-        (username, password)
+             c.execute(
+                       "SELECT * FROM users WHERE username=? AND password=?",
+                        (username, password)
     )
 
     data = c.fetchone()
