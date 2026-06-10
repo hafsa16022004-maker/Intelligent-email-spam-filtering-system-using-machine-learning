@@ -350,7 +350,26 @@ if st.session_state.logged_in == False:
             )
 
             if st.button("Login"):
-                st.write("Login Clicked")
+
+    c.execute(
+        "SELECT * FROM users WHERE username=? AND password=?",
+        (username, password)
+    )
+
+    data = c.fetchone()
+
+    if data:
+
+        st.session_state.logged_in = True
+        st.session_state.username = username
+
+        st.success("Login Successful!")
+
+        st.rerun()
+
+    else:
+
+        st.error("Invalid Username or Password")
 
             st.markdown('</div>', unsafe_allow_html=True)
 
